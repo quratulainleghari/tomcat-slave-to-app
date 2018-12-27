@@ -24,17 +24,17 @@ pipeline {
             }
       }
   
-      stage('SonarQube analysis') {
+      //stage('SonarQube analysis') {
          //Ws(/var/lib/jenkins)
     // requires SonarQube Scanner 2.4+
-         steps {
-         def scannerHome = tool 'SonarQube Scanner 2.4';
+        // steps {
+        // def scannerHome = tool 'SonarQube Scanner 2.4';
      
-        withSonarQubeEnv('My SonarQube Server') {
-     sh "${scannerHome}/opt/sonar/sonar-scanner"
-    }
-  }
- }
+        //withSonarQubeEnv('My SonarQube Server') {
+     //sh "${scannerHome}/opt/sonar/sonar-scanner"
+    //}
+ // }
+ //}
        
    stage('Deploy to Tomcat'){
   steps {

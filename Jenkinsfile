@@ -22,6 +22,12 @@ pipeline {
                 git "https://github.com/javahometech/my-app"
               sh 'mvn clean package'
             }
+          post {
+                success {
+                    archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+                    junit '**/target/surefire-reports/*.xml' 
+                }
+            }
       }
   
       //stage('SonarQube analysis') {

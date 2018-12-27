@@ -24,6 +24,14 @@ pipeline {
             }
       }
   
+       stage('SonarQube analysis') {
+    // requires SonarQube Scanner 2.4+
+    def scannerHome = tool 'SonarQube Scanner 2.4';
+    withSonarQubeEnv('My SonarQube Server') {
+      sh "${scannerHome}/opt/sonar/sonar-scanner"
+    }
+  }
+       
    stage('Deploy to Tomcat'){
   steps {
   sshagent(['3d0ff4fe-87e0-468b-9c6f-fbd6f291a57b']) {

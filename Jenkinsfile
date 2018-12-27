@@ -24,15 +24,17 @@ pipeline {
             }
       }
   
-      // stage('SonarQube analysis') {
+      stage('SonarQube analysis') {
+         Ws(/opt/sonar/sonar-scanner)
     // requires SonarQube Scanner 2.4+
-    //def scannerHome = tool 'SonarQube Scanner 2.4';
-       //   steps {  
-        //  withSonarQubeEnv('My SonarQube Server') {
-     // sh "${scannerHome}/opt/sonar/sonar-scanner"
-   // }
- // }
-       //}
+         steps {
+         def scannerHome = tool 'SonarQube Scanner 2.4';
+     
+        withSonarQubeEnv('My SonarQube Server') {
+     sh "${scannerHome}/opt/sonar/sonar-scanner"
+    }
+  }
+ }
        
    stage('Deploy to Tomcat'){
   steps {

@@ -25,7 +25,7 @@ pipeline {
       }
   
       stage('SonarQube analysis') {
-         Ws(/var/lib/jenkins)
+         //Ws(/var/lib/jenkins)
     // requires SonarQube Scanner 2.4+
          steps {
          def scannerHome = tool 'SonarQube Scanner 2.4';
